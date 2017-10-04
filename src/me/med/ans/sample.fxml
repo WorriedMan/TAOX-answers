@@ -9,7 +9,7 @@
 
 <Pane maxHeight="400" maxWidth="500" minHeight="300" minWidth="500" prefHeight="300" prefWidth="500.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="me.med.ans.Controller">
    <children>
-      <Label id="total_cards" fx:id="totalCardsLabel" text="Label">
+      <Label id="total_cards" fx:id="mTotalCardsLabel" text="Label">
          <padding>
             <Insets left="10.0" />
          </padding></Label>

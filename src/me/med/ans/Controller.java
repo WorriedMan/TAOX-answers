@@ -8,7 +8,7 @@ import javafx.scene.control.*;
 import java.util.ArrayList;
 
 public class Controller {
-    ArrayList<Answer> mAnswers;
+    private ArrayList<Answer> mAnswers;
     @FXML
     private TableView<Answer> mAnswerTable;
     @FXML
@@ -17,7 +17,7 @@ public class Controller {
     private TableColumn<Answer, String> mPositionColumn;
 
     @FXML
-    private Label totalCardsLabel;
+    private Label mTotalCardsLabel;
     @FXML
     private TextField mPartNameEdit;
     @FXML
@@ -25,7 +25,7 @@ public class Controller {
 
     private Main mainApp;
 
-    ObservableList<Answer> mResultsList = FXCollections.observableArrayList();
+    private ObservableList<Answer> mResultsList = FXCollections.observableArrayList();
 
     public Controller() {
     }
@@ -47,27 +47,28 @@ public class Controller {
             findPart(text);
         });
 
+
     }
 
     void setMainApp(Main mainApp, ArrayList<Answer> answers) {
         this.mainApp = mainApp;
         mAnswers = answers;
+        mTotalCardsLabel.setText("Загружено ответов: " + answers.size());
     }
 
     private void findPart(String text) {
+        String lowerText = text.toLowerCase();
         mResultsList.clear();
         int[] found = {0};
         mAnswers.forEach(answer -> {
-            if (answer.getPart().contains(text)) {
+            if (answer.getPart().contains(lowerText)) {
                 found[0]++;
                 mResultsList.add(answer);
-                System.out.println("Answer: " + answer.getPart() + " | " + answer.getPosition());
+//                System.out.println("Answer: " + answer.getPart() + " | " + answer.getPosition());
             }
         });
         if (found[0] == 0) {
-            System.out.println("Поиск заверщен, ответы не найдены");
-        } else {
-            System.out.println("Поиск заверщен, ответы выведены");
+            mAnswerTable.setPlaceholder(new Label("Ничего не найдено"));
         }
         mAnswerTable.setItems(mResultsList);
     }
