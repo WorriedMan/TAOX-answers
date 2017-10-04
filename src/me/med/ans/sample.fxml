@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+
+<Pane maxHeight="400" maxWidth="500" minHeight="300" minWidth="500" prefHeight="300" prefWidth="500.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="me.med.ans.Controller">
+   <children>
+      <Label id="total_cards" fx:id="totalCardsLabel" text="Label">
+         <padding>
+            <Insets left="10.0" />
+         </padding></Label>
+      <Label layoutY="25.0" text="Введите часть, которую нужно найти:">
+         <padding>
+            <Insets left="10.0" />
+         </padding></Label>
+      <TextField id="part_text" fx:id="mPartNameEdit" layoutX="10.0" layoutY="50.0" />
+      <Button id="find_button" fx:id="mFindButton" layoutX="10.0" layoutY="90.0" mnemonicParsing="false" text="Найти" />
+      <TableView id="result_table" fx:id="mAnswerTable" layoutX="230.0" prefHeight="280.0" prefWidth="260.0">
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+      </TableView>
+   </children>
+</Pane>
