@@ -75,9 +75,7 @@ public class Controller {
             return row;
         });
 
-        mAuthorLink.setOnAction((e) -> {
-            HostServicesFactory.getInstance(mainApp).showDocument("https://github.com/WorriedMan/");
-        });
+        mAuthorLink.setOnAction((e) -> HostServicesFactory.getInstance(mainApp).showDocument("https://github.com/WorriedMan/"));
 
 
     }
