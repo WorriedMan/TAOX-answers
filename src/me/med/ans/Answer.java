@@ -8,11 +8,13 @@ class Answer {
     private StringProperty mPartProperty;
     private String mPosition;
     private String mPart;
-    Answer(String position, String part) {
+    private String mImage;
+    Answer(String position, String part, String image) {
         mPosition = position;
         mPart = part;
         mPositionProperty = new SimpleStringProperty(mPosition);
         mPartProperty = new SimpleStringProperty(mPart);
+        mImage = image;
     }
 
     String getPosition() {
@@ -29,6 +31,10 @@ class Answer {
 
     StringProperty getPartProperty() {
         return mPartProperty;
+    }
+
+    String getImage() {
+        return mImage;
     }
 
 }

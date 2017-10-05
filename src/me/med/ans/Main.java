@@ -20,6 +20,7 @@ public class Main extends Application {
 
     private static final String ANSI_CODE = "windows-1251";
     private static final Charset ANSI_CHARSET = Charset.forName(ANSI_CODE);
+    private String mLastLine;
 
     private ArrayList<Answer> loadAnswers() {
         ArrayList<Answer> mAnswers = new ArrayList<>();
@@ -29,17 +30,21 @@ public class Main extends Application {
             stream.forEach((line) -> {
                 int lastPosition = 0;
                 int length = line.length();
-                if (length > 4) {
+                if (length > 5) {
                     for (int i = 0; i < length; i++) {
                         if (line.charAt(i) != ' ') {
                             lastPosition++;
                         } else {
                             if (length >= lastPosition) {
-                                Answer answer = new Answer(line.substring(0, lastPosition), line.substring(lastPosition).toLowerCase());
+                                Answer answer = new Answer(line.substring(0, lastPosition), line.substring(lastPosition).toLowerCase(), getLastLine());
                                 mAnswers.add(answer);
                             }
                             break;
                         }
+                    }
+                } else {
+                    if (line.matches("^[A-Z][0-9].+")) {
+                        setLastLine(line);
                     }
                 }
             });
@@ -54,6 +59,14 @@ public class Main extends Application {
         return mAnswers;
     }
 
+    private void setLastLine(String line) {
+        mLastLine = line;
+    }
+
+    private String getLastLine() {
+        return mLastLine;
+    }
+
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -61,7 +74,7 @@ public class Main extends Application {
         Parent root = fxmlLoader.load(getClass().getResource("sample.fxml").openStream());
         Controller appController = fxmlLoader.getController();
         primaryStage.setTitle("TAOX ответы");
-        primaryStage.setScene(new Scene(root, 500, 300));
+        primaryStage.setScene(new Scene(root, 700, 300));
         primaryStage.show();
         ArrayList<Answer> answers = loadAnswers();
         appController.setMainApp(this, answers);

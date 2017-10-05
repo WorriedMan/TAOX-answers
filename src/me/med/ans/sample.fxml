@@ -5,9 +5,10 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane maxHeight="400" maxWidth="500" minHeight="300" minWidth="500" prefHeight="300" prefWidth="500.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="me.med.ans.Controller">
+<Pane maxHeight="400" maxWidth="700" minHeight="300" minWidth="700" prefHeight="300" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="me.med.ans.Controller">
    <children>
       <Label id="total_cards" fx:id="mTotalCardsLabel" text="Label">
          <padding>
@@ -24,5 +25,6 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
+      <ImageView fx:id="mImageView" fitHeight="150.0" fitWidth="200.0" layoutX="495.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </Pane>

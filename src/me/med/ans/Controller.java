@@ -3,8 +3,18 @@ package me.med.ans;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.Parent;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseButton;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 
 public class Controller {
@@ -22,10 +32,14 @@ public class Controller {
     private TextField mPartNameEdit;
     @FXML
     private Button mFindButton;
+    @FXML
+    private ImageView mImageView;
 
     private Main mainApp;
 
     private ObservableList<Answer> mResultsList = FXCollections.observableArrayList();
+
+    private File mPrevImage;
 
     public Controller() {
     }
@@ -47,7 +61,36 @@ public class Controller {
             findPart(text);
         });
 
+        mAnswerTable.setRowFactory(tv -> {
+            TableRow<Answer> row = new TableRow<>();
+            row.setOnMouseClicked(event -> {
+                if (!row.isEmpty() && event.getButton() == MouseButton.PRIMARY
+                        && event.getClickCount() == 1) {
+                    setImageView(row.getItem());
+                }
+            });
+            return row;
+        });
 
+
+    }
+
+    private void setImageView(Answer item) {
+        if (item.getImage() != null) {
+            Path imagePath = Paths.get("files/" + item.getImage() + ".jpg");
+            try {
+                if (Files.exists(imagePath)) {
+                    InputStream is = new FileInputStream(imagePath.toString());
+                    Image image = new Image(new BufferedInputStream(is), 50, 0, true, false);
+                    mImageView.setImage(null);
+                    mImageView.setImage(image);
+                } else {
+                    throw new FileNotFoundException();
+                }
+            } catch (FileNotFoundException ignored) {
+                mImageView.setImage(null);
+            }
+        }
     }
 
     void setMainApp(Main mainApp, ArrayList<Answer> answers) {
