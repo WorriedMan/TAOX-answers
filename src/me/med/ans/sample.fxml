@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
@@ -10,21 +11,22 @@
 
 <Pane maxHeight="400" maxWidth="700" minHeight="300" minWidth="700" prefHeight="300" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="me.med.ans.Controller">
    <children>
-      <Label id="total_cards" fx:id="mTotalCardsLabel" text="Label">
+      <Label id="total_cards" fx:id="mTotalCardsLabel" layoutY="10.0" text="Label">
          <padding>
             <Insets left="10.0" />
          </padding></Label>
-      <Label layoutY="25.0" text="Введите часть, которую нужно найти:">
+      <Label layoutY="35.0" text="Введите часть, которую нужно найти:">
          <padding>
             <Insets left="10.0" />
          </padding></Label>
-      <TextField id="part_text" fx:id="mPartNameEdit" layoutX="10.0" layoutY="50.0" />
-      <Button id="find_button" fx:id="mFindButton" layoutX="10.0" layoutY="90.0" mnemonicParsing="false" text="Найти" />
-      <TableView id="result_table" fx:id="mAnswerTable" layoutX="230.0" prefHeight="280.0" prefWidth="260.0">
+      <TextField id="part_text" fx:id="mPartNameEdit" layoutX="10.0" layoutY="60.0" />
+      <Button id="find_button" fx:id="mFindButton" layoutX="10.0" layoutY="100.0" mnemonicParsing="false" text="Найти" />
+      <TableView id="result_table" fx:id="mAnswerTable" layoutX="230.0" layoutY="10.0" prefHeight="280.0" prefWidth="260.0">
          <columnResizePolicy>
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <ImageView fx:id="mImageView" fitHeight="150.0" fitWidth="200.0" layoutX="495.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="mImageView" fitHeight="150.0" fitWidth="200.0" layoutX="495.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" />
+      <Hyperlink fx:id="mAuthorLink" layoutX="495.0" layoutY="267.0" text="https://github.com/WorriedMan/" />
    </children>
 </Pane>

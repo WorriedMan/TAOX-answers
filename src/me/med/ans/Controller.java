@@ -1,5 +1,6 @@
 package me.med.ans;
 
+import com.sun.deploy.uitoolkit.impl.fx.HostServicesFactory;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -34,6 +35,8 @@ public class Controller {
     private Button mFindButton;
     @FXML
     private ImageView mImageView;
+    @FXML
+    private Hyperlink mAuthorLink;
 
     private Main mainApp;
 
@@ -70,6 +73,10 @@ public class Controller {
                 }
             });
             return row;
+        });
+
+        mAuthorLink.setOnAction((e) -> {
+            HostServicesFactory.getInstance(mainApp).showDocument("https://github.com/WorriedMan/");
         });
 
 
